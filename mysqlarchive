@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+NOW=$(date +"%Y%m%d-%H%M%S")
+DATABASES=""
+
+while getopts ":B:" opt; do
+    case $opt in
+        B)
+            DATABASES=$OPTARG
+            ;;
+        :)
+            echo "Option -$OPTARG requires an argument." >&2
+            exit 1
+            ;;
+    esac
+done
+
+OUTFILE=/tmp/$DATABASES-$NOW.sql.bz2
+
+mysqldump $@ | bzip2 > $OUTFILE
+echo $OUTFILE
