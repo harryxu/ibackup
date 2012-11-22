@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+# useage:
+#
+# Archive a database to /tmp/.
+#   mysqlarchive -uroot -B dbname
+#
+# Archive a database and put to dropbox.
+#   mysqlarchive -uroot -B dbname | ibackup_dropbox.py
+
+
 NOW=$(date +"%Y%m%d-%H%M%S")
 DATABASES=""
 
