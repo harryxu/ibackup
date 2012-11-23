@@ -7,10 +7,16 @@
 #
 # Archive a database and put to dropbox.
 #   mysqlarchive -uroot -B dbname | ibackup_dropbox.py
+#
+# If you don't want mysqldump generate 'USE dbname' statement, use:
+#   mysqlarchive dbname -uroot 
+# Without -B or --databases option and dbname must be the first argument.
+
 
 
 NOW=$(date +"%Y%m%d-%H%M%S")
 DATABASES=""
+
 
 while getopts ":B:" opt; do
     case $opt in
@@ -23,6 +29,10 @@ while getopts ":B:" opt; do
             ;;
     esac
 done
+
+if [[ -z "$DATABASES" ]]; then
+    DATABASES=$1
+fi
 
 OUTFILE=/tmp/$DATABASES-$NOW.sql.bz2
 
