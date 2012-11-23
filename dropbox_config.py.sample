@@ -1,0 +1,5 @@
+# XXX Fill in your consumer key and secret below
+# You can find these at http://www.dropbox.com/developers/apps
+APP_KEY = ''
+APP_SECRET = ''
+ACCESS_TYPE = 'app_folder'  # should be 'dropbox' or 'app_folder' as configured for your app
