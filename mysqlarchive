@@ -6,7 +6,7 @@
 #   mysqlarchive -uroot -B dbname
 #
 # Archive a database and put to dropbox.
-#   mysqlarchive -uroot -B dbname | ibackup_dropbox.py
+#   mysqlarchive -uroot -B dbname | xargs ibackup_dropbox.py
 #
 # If you don't want mysqldump generate 'USE dbname' statement, use:
 #   mysqlarchive dbname -uroot 

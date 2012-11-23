@@ -2,7 +2,6 @@
 
 import os
 import sys
-import select
 
 from dropbox import client
 from dropbox_config import APP_KEY, APP_SECRET, ACCESS_TYPE
@@ -20,11 +19,8 @@ def put_file(path):
 if not sess.is_linked():
     print 'Please run dropbox_cli.py and login first'
 else:
-    # http://stackoverflow.com/a/3763257/157811
-    if select.select([sys.stdin,],[],[],0.0)[0]:
-        for line in sys.stdin.read().splitlines():
-            if line:
-                put_file(line)
-    elif len(sys.argv) > 1:
+    if len(sys.argv) > 1:
         put_file(sys.argv[1])
+    else:
+        print 'no file to put'
         
