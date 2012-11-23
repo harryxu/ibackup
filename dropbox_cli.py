@@ -193,7 +193,8 @@ class StoredSession(session.DropboxSession):
 
     def load_creds(self):
         try:
-            stored_creds = open(self.TOKEN_FILE).read()
+            basepath = os.path.dirname(os.path.realpath(__file__))
+            stored_creds = open(basepath + '/' + self.TOKEN_FILE).read()
             self.set_token(*stored_creds.split('|'))
         except IOError:
             pass # don't worry if it's not there
