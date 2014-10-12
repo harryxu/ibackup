@@ -20,6 +20,8 @@ if not sess.is_linked():
     print 'Please run dropbox_cli.py and login first'
 else:
     if len(sys.argv) > 1:
+        filename = sys.argv[1]
+        print 'puting %s' % filename
         put_file(sys.argv[1])
     else:
         print 'no file to put'
